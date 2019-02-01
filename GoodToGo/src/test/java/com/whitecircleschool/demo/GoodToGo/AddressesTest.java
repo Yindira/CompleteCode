@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class AddressesTest extends BaseTest {
@@ -39,9 +40,9 @@ public class AddressesTest extends BaseTest {
 			x.click();
 			if (!(x.getText()).equals("Select")) {
                 
-				System.out.println("**************");
+				/*System.out.println("**************");
 				System.out.println(x.getText());
-				System.out.println("**************");
+				System.out.println("**************");*/
 				
 				Select select2 = new Select(bp.getCountry());
 				List<WebElement> countries = select2.getOptions();
@@ -54,9 +55,9 @@ public class AddressesTest extends BaseTest {
 
 					if (!(y.getText()).equals("Select") && (!(addrDispalyedStatus1))) {
 
-						System.out.println(y.getText());
+						/*System.out.println(y.getText());
 						System.out.println("Address present");
-						System.out.println("");
+						System.out.println("");*/
 
 					} else {
 						
@@ -65,6 +66,7 @@ public class AddressesTest extends BaseTest {
 						}
 						System.out.println(y.getText());
 						System.out.println("Address not present");
+						Assert.assertTrue(addrDispalyedStatus1);
 					}
 				}
 

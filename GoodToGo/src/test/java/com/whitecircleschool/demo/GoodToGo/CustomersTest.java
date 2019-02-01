@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CustomersTest extends BaseTest {
@@ -46,16 +47,19 @@ public class CustomersTest extends BaseTest {
 				if (x.getText().equals("Oprah Winfrey")) {
 
 					notFound = false;
-					 
-					String paymentMethod = driver.findElement(By.cssSelector("body > div.elementor.elementor-207 > div > div > section.elementor-element.elementor-element-157b4b6.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section > div > div > div > div > div > div > div > div.main > table > tbody > tr:nth-child(7) > td:nth-child(5)")).getText();
+					
+					String expectedPaymentMethod = "Credit Card";
+					String actualPaymentMethod = driver.findElement(By.cssSelector("body > div.elementor.elementor-207 > div > div > section.elementor-element.elementor-element-157b4b6.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section > div > div > div > div > div > div > div > div.main > table > tbody > tr:nth-child(7) > td:nth-child(5)")).getText();
 					System.out.println("**************************************************");
-					System.out.println("Oprah Winfrey's payment method is " +paymentMethod); 
+					System.out.println("Oprah Winfrey's payment method is " + actualPaymentMethod); 
 					System.out.println("**************************************************");
+					
+					Assert.assertEquals(actualPaymentMethod, expectedPaymentMethod);
 					break;
 
 				}
 
-				//System.out.println(notFound);
+				
 
 			}
 
